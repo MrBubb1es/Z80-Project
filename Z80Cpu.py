@@ -42,6 +42,10 @@ class Z80:
 
         }
 
+
+    """
+    Getters and Setters
+    """
     def AF(self):
         return self.A << 8 | self.F
 
@@ -55,11 +59,33 @@ class Z80:
         return self.H << 8 | self.L
 
 
+
     """
     OPCODES:
 
     """
-    
+
+    """
+    Other Functions
+    """
+    def clock(self):
+        """ Ripped straight from the OneLoneCoder 6502 implementation videos """
+        if self.cycles == 0:
+            self.opcode = self.GetOpcode()
+            self.PC += 1
+
+            intruction = self.dictionary[self.opcode]
+
+            # Set number of clock cycles for this instruction
+            self.cycles = intruction.cycles
+
+            # Changes address mode
+            additional_cycle_1 = intruction.address_mode.Excecute()
+
+            # Excecute opcode
+            additional_cycle_2 = intruction.operate.Excecute()
+
+            self.cycles += (additional_cycle_1 & additional_cycle_2)
 
 
 test = Z80("bus")
