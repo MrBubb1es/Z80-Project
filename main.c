@@ -1,20 +1,19 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
-#include <string.h>
+#include <stdlib.h>
 
-#include "config.h"
-#include "cpu.h"
-#include "ram.h"
-#include "opcodes.h"
+#include "z80cpu.h"
+#include "z80opcodes.h"
+
+#define MEMSIZE 65536
+
+uint8_t memory[MEMSIZE];
 
 
-uint8_t memory[MEM_SIZE];
 
 int main(int argc, char const *argv[]) {
-  memset(memory, 0, MEM_SIZE);
-
-  printf("Hello, World!");
-
-  return 0;
+  A=0;
+  printf("%d\n", fetch(memory, MEMSIZE, 255));
+  printf("%d\n", fetch(memory, MEMSIZE, 755));
+  return A;
 }
