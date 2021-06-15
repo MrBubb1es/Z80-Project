@@ -1,11 +1,10 @@
-import numpy as np
+from Z80Instruction import Intruction
+
+
 
 # Z80 CPU
 class Z80:
-    def __init__(self, bus):
-        # Reference to bus class
-        self.bus = bus
-
+    def __init__(self):
         # Registers
         # 16 bit
         self.PC = 0
@@ -38,9 +37,7 @@ class Z80:
         self.I = 0
         self.R = 0
 
-        self.opcodes = {
-
-        }
+        self.opcodes = {0x00 : Instruction("nop", self.NOP, "IMP", 4, 1), 0x01 : Instruction("nop", self.NOP, "IMP", 4, 1)}
 
 
     """
@@ -64,6 +61,8 @@ class Z80:
     OPCODES:
 
     """
+    def NOP(self):
+        pass
 
     """
     Other Functions
@@ -86,6 +85,8 @@ class Z80:
             additional_cycle_2 = intruction.operate.Excecute()
 
             self.cycles += (additional_cycle_1 & additional_cycle_2)
+
+        self.cycles -= 1
 
 
 test = Z80("bus")

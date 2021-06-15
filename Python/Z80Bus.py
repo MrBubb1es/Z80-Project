@@ -1,8 +1,8 @@
-class Bus:
+"""class Bus:
     def __init__(self):
-        """
+
         The Z80 Processor has a total of 40 pins:
-        """
+
         # 16 Bits for 16 address pins
         self.ADDRESS = 0
 
@@ -154,7 +154,8 @@ class Bus:
 
 
 
-"""
+
 TESTING STUFF:
-"""
+
 testBus = Bus()
+"""
