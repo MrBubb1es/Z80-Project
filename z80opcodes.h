@@ -1,8 +1,11 @@
 #ifndef Z80OPCODES_H
 #define Z80OPCODES_H
 
+#include <stdint.h>
 #include <stdlib.h>
+
 #include "z80error.h"
+#include "z80cpu.h"
 
 typedef struct {
   char *name;
@@ -10,6 +13,9 @@ typedef struct {
   int bytes;
   void (*func)();
 } Opcode_t;
+
+// Jump table of all opcodes
+Opcode_t *instructionTable[2];
 
 // Constructor method for Opcode_t struct
 //   name - used for logging, the name doesn't affect the function of the instruction
@@ -21,13 +27,13 @@ Opcode_t *newOpcode(char *name, int cycles, int bytes, void (*func)()) {
   new_instruction->name = name;
   new_instruction->cycles = cycles;
   new_instruction->bytes = bytes;
-  new_instruction->(*func) = (*func);
+  new_instruction->func = func;
   return new_instruction;
 }
 
 
 void invalidInstruction() {
-  error("tried to execute illegal opcode");
+  error("tried to execute illegal opcode", ILLEGAL_OPCODE);
 }
 
 
@@ -45,7 +51,7 @@ void populateJumpTable(Opcode_t *table[]) {
 
   table[0x00] = newOpcode("NOP", 4, 1, &NOP);
   table[0x3E] = newOpcode("LD A, ", 2, 2, &LD_A_N);
-  
+
 }
 
 

@@ -2,30 +2,30 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#include "z80config.h"
 #include "z80cpu.h"
 #include "z80opcodes.h"
 #include "z80mem.h"
+#include "z80debug.h"
 
-
+void blank() {
+  return;
+}
 
 int main(int argc, char const *argv[]) {
-  int running = 1;
+  populateJumpTable(instructionTable);
 
-  while (running) {
+  printf("%s\n", instructionTable[0x00]->name);
+  printf("%s\n", instructionTable[0x3E]->name);
 
 #ifdef DEBUGGING
-  debugCycle();
+  FILE *log = debugInit();
 #endif
 
-  clock();
-
-
+  int running = 1;
+  while (running) {
+    running = 0;
   }
 
-  A=0;
-  printf("%d\n", fetch(memory, MEMSIZE, 255));
-  printf("%d\n", fetch(memory, MEMSIZE, 755));
-
-
-  return A;
+  return 0;
 }

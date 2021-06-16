@@ -1,7 +1,8 @@
 #ifndef Z80MEMORY_H
 #define Z80MEMORY_H
 
-#define MEMSIZE 65536
+#include "z80config.h"
+#include "z80error.h"
 
 uint8_t memory[MEMSIZE];
 
