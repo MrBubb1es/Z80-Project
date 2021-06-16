@@ -1,0 +1,2 @@
+Instruction: 0, Addressing Mode: NONE, Opcode: NOP
+Instruction: 1, Addressing Mode: IMM, Opcode: LD A, Next byte: 1

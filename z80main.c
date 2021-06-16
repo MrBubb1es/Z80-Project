@@ -13,18 +13,24 @@ void blank() {
 }
 
 int main(int argc, char const *argv[]) {
-  populateJumpTable(instructionTable);
-
-  printf("%s\n", instructionTable[0x00]->name);
-  printf("%s\n", instructionTable[0x3E]->name);
-
+  populateJumpTable(instruction_table);
+  Opcode_t *current_instruction;
 #ifdef DEBUGGING
   FILE *log = debugInit();
 #endif
 
-  int running = 1;
+  memory[1] = 0x3E;
+  memory[2] = 0xFF;
+  PC = 0;
+
+  int running = 2;
   while (running) {
-    running = 0;
+    current_instruction = instruction_table[read(memory, MEMSIZE, PC)];
+    current_instruction->func();
+    debugCycle(log);
+
+    PC++;
+    running--;
   }
 
   return 0;
