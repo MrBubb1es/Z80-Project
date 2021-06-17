@@ -1,6 +1,9 @@
 #ifndef Z80MEMORY_H
 #define Z80MEMORY_H
 
+#include <stdio.h>
+#include <stdint.h>
+
 #include "z80config.h"
 #include "z80error.h"
 
