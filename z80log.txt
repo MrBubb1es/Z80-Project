@@ -1,17 +1,14 @@
 Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 3E, Addressing Mode: IMM, Opcode: LD A, Next byte: FF
-Instruction: C6, Addressing Mode: IMM, Opcode: ADD A, Next byte: 1
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: C1, Addressing Mode: REG, Opcode: POP BC
+Instruction: DE, Addressing Mode: REG, Opcode: LDI
 CPU Registers:
   A = 0
-  F = 55
-  B = DD
-  C = 11
+  F = 0
+  B = 0
+  C = 0
   D = 0
-  E = 0
-  H = FF
-  L = FF
+  E = 1
+  H = 0
+  L = 0
 
   A2 = 0
   F2 = 0
@@ -25,26 +22,8 @@ CPU Registers:
   I = 0
   R = 0
 
-  PC = 6
-  SP = FFFF
+  PC = 1
+  SP = 0
   IX = 0
   IY = 0
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
-Instruction: 0, Addressing Mode: NONE, Opcode: NOP
 Instruction: 0, Addressing Mode: NONE, Opcode: NOP

@@ -52,7 +52,16 @@ void logReg(FILE *log) {
 }
 
 void debugCycle(FILE *log) {
-  Opcode_t *instruction = instruction_table[memory[PC]];
+  Opcode_t *instruction;
+
+  switch (memory[PC]) {
+    case 0xDE:
+      instruction = EXTD_instruction_table[memory[PC+1]];
+      break;
+    default:
+      instruction = instruction_table[memory[PC]];
+      break;
+  }
 
   if (instruction->addressing_mode == "IMM") {
     fprintf(log, "Instruction: %X, Addressing Mode: IMM, Opcode: %s, Next byte: %X\n", memory[PC], instruction->name, memory[PC + 1]);
